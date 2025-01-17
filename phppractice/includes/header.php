@@ -11,17 +11,17 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container">
-            <a class="navbar-brand text-white" href="home.php"> <i class="fa fa-shield" aria-hidden="true"></i> Security System</a>
+            <a class="navbar-brand " href="home.php"> <i class="fa fa-shield" aria-hidden="true"></i> Security System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link text-white" aria-current="page" href="home.php"> <i class="fa fa-home"></i> Home</a>
+                <a class="nav-link " aria-current="page" href="home.php"> <i class="fa fa-home"></i> Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-user-circle-o" aria-hidden="true"></i> My Acount
                 </a>
                 <ul class="dropdown-menu">
