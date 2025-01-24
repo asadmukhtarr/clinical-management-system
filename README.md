@@ -36,6 +36,9 @@
     - In php: For Redirect We can use: Header();
     - . concatination operator which is used to merge two variables , sentences ..
     - In php: we can use echo or print for print on screen but echo is recommender ..
+    - Session ak aisa variable jis mai hm value store krva skty hein or project mai kahin b or kabi b use kr skty hein ..
+    - session brwoser + compuer ...
+    - cookies browser ...
 
 # Tips And Tricks
     - We can write any code related to web in php .. ( Html , JS , PHP , CSS) ...

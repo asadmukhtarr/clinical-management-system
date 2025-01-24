@@ -31,11 +31,12 @@
                         </div>
                         <div class="form-group mt-3">
                                 <label for=""> <i class="fa fa-key"></i> Password</label>
-                                <input type="password" class="form-control" placeholder="Enter Your password" name="password">
+                                <input type="password" id="password" class="form-control" placeholder="Enter Your password" name="password">
+                                <span class="text-danger" id="password_error"><span>
                         </div>
                         <div class="form-group mt-3">
                                 <label for=""> <i class="fa fa-key"></i> Confrim Password</label>
-                                <input type="password" class="form-control" placeholder="Enter Your password" name="cpassword">
+                                <input type="password" id="cpassword" onChange="confirmpassword(this.value)" class="form-control" placeholder="Enter Your password" name="cpassword">
                         </div>
                         </div>
                         <div class="card-footer">
@@ -46,4 +47,16 @@
             </div>
         </div>
     </div>
+<script>
+    function confirmpassword(v){
+        var password  = document.getElementById("password").value;
+        var cpassword = document.getElementById("cpassword").value;
+        if(password == cpassword){
+            console.log("password is working");
+        } else {
+            console.log('not matched');
+            document.getElementById("password_error").innerHTML  = "Password did not matched";
+        }
+    }
+</script>
 <?php include('includes/footer.php'); ?>

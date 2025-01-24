@@ -1,7 +1,13 @@
-<?php include('includes/header.php'); ?>
+<?php 
+    include('includes/header.php'); 
+    session_start();
+    if(empty($_SESSION['user'])){
+        header('Location:index.php');
+    }
+?>
 <div class="jumbotron bg-warning border border-top-1 border-danger shadow-lg">
    <div class="container pt-5 pb-3">
-        <h2> <i class="fa fa-home"></i> Welcome to Security System</h2>
+        <h2> <i class="fa fa-home"></i> Welcome <?php echo $_SESSION['user']; ?></h2>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo accusantium totam molestiae maxime tenetur culpa a in sit. Laboriosam explicabo deleniti quidem ipsum ducimus illum porro officiis nulla, eius aliquam iste, culpa molestias! Voluptas ipsa nesciunt temporibus asperiores doloribus? Eveniet sit quibusdam cum architecto ex magni explicabo rerum, similique iste!
         </p>
