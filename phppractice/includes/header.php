@@ -1,3 +1,4 @@
+<?php     session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,18 +18,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                
+                <?php if(!empty($_SESSION['user'])){ ?>
                 <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="home.php"> <i class="fa fa-home"></i> Home</a>
+                    <a class="nav-link " aria-current="page" href="home.php"> <i class="fa fa-home"></i> Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger text-white" aria-current="page" href="actions/logout.php"> <i class="fa fa-sign-out"></i> Logout</a>
+                </li>
+                <?php } else { ?>
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> My Acount
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="index.php">Login </a></li>
-                    <li><a class="dropdown-item" href="register.php">Register</a></li>
-                </ul>
+                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i> My Acount
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.php">Login </a></li>
+                        <li><a class="dropdown-item" href="register.php">Register</a></li>
+                    </ul>
                 </li>
+                <?php } ?>
             </ul>
             </div>
         </div>
