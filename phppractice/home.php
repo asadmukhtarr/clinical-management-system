@@ -43,14 +43,14 @@
                     <td><?php echo $row['whatsapp']; ?></td>
                     <td><?php echo ucfirst($row['gender']); ?></td>
                     <td>
-                        <button class="btn btn-sm btn-warning">
-                            <i class="fa fa-pencil"></i>
-                        </button>
-                        <a href="actions/delete.php?id=<?php echo $row['id']; ?>">
-                        <button class="btn btn-sm btn-danger">
+                        <a href="edit.php?id=<?php echo $row['id']; ?>">
+                            <button class="btn btn-sm btn-warning">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                        </a>
+                        <button class="btn btn-sm btn-danger" value="<?php echo $row['id']; ?>" onclick="confirmDelete(this.value)">
                             <i class="fa fa-trash"></i>
                         </button>
-                        </a>
                     </td>
                 </tr>
                 <?php  
@@ -67,4 +67,11 @@
         </table>
     </div>
 </div>
+<script>
+    function confirmDelete(id){
+        if(confirm("Are you sure? You want to delete user.") == true){
+            window.location = "./actions/delete.php?id="+id;
+        } 
+    }
+</script>
 <?php include('includes/footer.php'); ?>
