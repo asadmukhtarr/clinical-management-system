@@ -1,0 +1,11 @@
+Laravel: Framework of php and use in cloud base application development, as full stack web development tool.
+Main purpse: Backend Development ..
+---------------------------------------------
+System Requirements:
+	- Minimum 8 GB Rams
+	- SSD ( Recommended ) ..
+	- Operating System: Windows 10 , 8 Linux , Unix , MacOS ( Best ) ..
+Requirements for Installation of laravel project:
+	- Xampp/Wampp ( Local Server ) ..
+	- Download & Install Composer ...
+----------------------------------------------------------------------------------

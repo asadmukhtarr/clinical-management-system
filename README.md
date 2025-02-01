@@ -39,6 +39,16 @@
     - Session ak aisa variable jis mai hm value store krva skty hein or project mai kahin b or kabi b use kr skty hein ..
     - session brwoser + compuer ...
     - cookies browser ...
+    - Laravel Installations:
+        - Step # 1: Download and install xampp/wampp...
+        - Step # 2: Download Composer And Install
+        - Step # 3: Open CMD And RUN : composer global require laravel/installer
+        - Step # 4: Now Create Your First Project: Laravel new <Project-Name /> ..
+        - Step # 5: php artisan serve ( For RUn Project ) ..
+    - Laravel Guidlines:
+        - M : Model : Database Related Work ..     : App\Models ..
+        - V : View  : Frontend Related Work        : resources\views ..
+        - C : Controller : Backend Related Work .. : App\Http\Controllers ..
 
 # Tips And Tricks
     - We can write any code related to web in php .. ( Html , JS , PHP , CSS) ...
