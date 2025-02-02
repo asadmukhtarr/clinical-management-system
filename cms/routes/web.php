@@ -8,3 +8,7 @@ Route::get('/', function () {
 Route::get('/asad',function(){
     return "Hello Ibrahim";
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

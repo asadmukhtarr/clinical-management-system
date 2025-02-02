@@ -42,6 +42,7 @@
     - Laravel Installations:
         - Step # 1: Download and install xampp/wampp...
         - Step # 2: Download Composer And Install
+        - Step # 2.1: Open CMD In C:Xampp/htdocs/
         - Step # 3: Open CMD And RUN : composer global require laravel/installer
         - Step # 4: Now Create Your First Project: Laravel new <Project-Name /> ..
         - Step # 5: php artisan serve ( For RUn Project ) ..
@@ -49,8 +50,15 @@
         - M : Model : Database Related Work ..     : App\Models ..
         - V : View  : Frontend Related Work        : resources\views ..
         - C : Controller : Backend Related Work .. : App\Http\Controllers ..
+    - Laravel Authentication System With Vue ..
+        - Step # 1: composer require laravel/ui
+        - Step # 2: php artisan ui vue --auth 
+        - Step # 3: php artisan migrate (optional) ..
+        - Step # 4: npm install ( Download NodeJS And Install for Run Npm) , If node_moules folder will not appear in your project then run npm install --force 
+        - Step # 5: npm run dev 
 
 # Tips And Tricks
     - We can write any code related to web in php .. ( Html , JS , PHP , CSS) ...
+    - NPM ( Node Package Manager )
 # Helping Links
     - https://www.youtube.com/watch?v=SMhcOUwRCt8&list=PLPvf-1cCig-HVjByU6jLou-IRlGpsGA61
