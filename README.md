@@ -56,6 +56,10 @@
         - Step # 3: php artisan migrate (optional) ..
         - Step # 4: npm install ( Download NodeJS And Install for Run Npm) , If node_moules folder will not appear in your project then run npm install --force 
         - Step # 5: npm run dev 
+    - Routes , Views ...
+        - Views: Frontend Apko Show Ho raha hai ... : resoruces/views .. extension .. filename.blade.php
+        - Routes(urls, Links) : Direct Through View , Through Controller ..
+        - For Controller: php artisan make:controller pagesController 
 
 # Tips And Tricks
     - We can write any code related to web in php .. ( Html , JS , PHP , CSS) ...
