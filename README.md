@@ -66,3 +66,7 @@
     - NPM ( Node Package Manager )
 # Helping Links
     - https://www.youtube.com/watch?v=SMhcOUwRCt8&list=PLPvf-1cCig-HVjByU6jLou-IRlGpsGA61
+# Commands:
+    - For Create Controller: Php artisan make:controller nameController
+    - For Migrate : php artisan migrate
+    - 
