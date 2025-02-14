@@ -25,7 +25,7 @@ Route::prefix('users')->group(function(){
 // bookoings ..
 Route::prefix('appoinments')->group(function(){
     Route::get('/new',[pagesController::class,'new_appointment'])->name('new.appointment'); // new  ..
-    Route::get('/',[pagesController::class,'all_appointments'])->name('new.appointment'); // new  ..
+    Route::get('/',[pagesController::class,'all_appointments'])->name('all.appointment'); // new  ..
 });
 // // doctors ..
 Route::get('/doctors',[pagesController::class,'doctors'])->name('doctors'); // all doctors ..
