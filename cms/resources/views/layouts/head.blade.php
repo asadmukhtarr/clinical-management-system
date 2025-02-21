@@ -27,7 +27,7 @@
           <!-- Patient Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link active" href="{{ route('patient') }}" role="button">
-              <i class="fa fa-user"></i> Patient
+              <i class="fa fa-user-circle"></i> Patient
             </a>
           </li>
           <!-- Doctors -->
