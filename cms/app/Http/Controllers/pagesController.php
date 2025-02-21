@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\specialities;
 
 class pagesController extends Controller
 {
@@ -18,6 +19,16 @@ class pagesController extends Controller
     //specialites
     public function specialites(){
         return view('specialites');
+    }
+    // save spec
+    public function save_specialites(Request $request){
+        $validated = $request->validate([
+            'title' => 'required|min:6|max:30',
+        ]);
+        $special = new specialities;
+        $special->title = $request->title;
+        $special->save();
+        return redirect()->back()->with('success','Speciality Created Succesfully');
     }
     // create user ...
     public function create_user(){

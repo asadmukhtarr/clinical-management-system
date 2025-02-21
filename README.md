@@ -69,4 +69,5 @@
 # Commands:
     - For Create Controller: Php artisan make:controller nameController
     - For Migrate : php artisan migrate
-    - 
+    - For Create Model: php artisan make:model 
+    - For Create Connected Model + Migration : php artisan make:model -m
