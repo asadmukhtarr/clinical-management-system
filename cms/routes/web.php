@@ -18,6 +18,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/settings',[pagesController::class,'settings'])->name('settings'); // for settings ..
     Route::get('/specialites',[pagesController::class,'specialites'])->name('specialites');  // specialites ..
     Route::post('/save/specialites',[pagesController::class,'save_specialites'])->name('specialites.save'); // save ..
+    Route::get('/specialites/{id}',[pagesController::class,'delete_special'])->name('delete.special'); // delete ..
+    Route::get('/specialites/edit/{id}',[pagesController::class,'edit_special'])->name('special.edit'); // for edit ..
+    Route::post('/specialites/update/{id}',[pagesController::class,'update_special'])->name('special.update'); // for update ..
     // group routes .. after users ..
     Route::prefix('users')->group(function(){
         Route::get('/create',[pagesController::class,'create_user'])->name('create.user'); // create user ..

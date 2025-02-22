@@ -18,7 +18,8 @@ class pagesController extends Controller
     }
     //specialites
     public function specialites(){
-        return view('specialites');
+        $specilities = specialities::orderby('id','desc')->get();
+        return view('specialites',compact('specilities'));
     }
     // save spec
     public function save_specialites(Request $request){
@@ -29,6 +30,27 @@ class pagesController extends Controller
         $special->title = $request->title;
         $special->save();
         return redirect()->back()->with('success','Speciality Created Succesfully');
+    }
+    // delete ..
+    public function delete_special($id){
+        $special = specialities::find($id);
+        $special->delete();
+        return redirect()->back()->with('warning','speciality Delete Succesfully');
+    }
+    // edit ..
+    public function edit_special($id){
+        $special = specialities::find($id);
+        return view('editspecial',compact('special'));
+    }
+    // update special ..
+    public function update_special($id,Request $request){
+        $validated = $request->validate([
+            'title' => 'required|min:6|max:30',
+        ]);
+        $special = specialities::find($id);
+        $special->title = $request->title;
+        $special->save();
+        return redirect()->back()->with('success','Speciality Update Succesfully');
     }
     // create user ...
     public function create_user(){
@@ -47,7 +69,8 @@ class pagesController extends Controller
     }
     // all doctors ...
     public function doctors(){
-        return view('doctors');
+        $specilities = specialities::orderby('id','desc')->get();
+        return view('doctors',compact('specilities'));
     }
     // patients 
     public function patients(){

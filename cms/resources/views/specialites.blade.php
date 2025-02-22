@@ -1,12 +1,7 @@
 @extends('layouts.head')
 @section('title','Patients')
 @section('body')
-@if($message = Session::get('success'))
-<div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
-  <strong>Success!</strong> {{ $message }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
+@include('includes.flash')
 <div class="card mt-3">
     <div class="card-header bg-danger text-white">
         <i class="fa fa-stethoscope"></i> All Specialites
@@ -43,14 +38,16 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($specilities as $special)
             <tr>
-                <td>1</td>
-                <td>John Doe</td>
+                <td>{{ $special->id }}</td>
+                <td>{{ $special->title }}</td>
                 <td>
-                    <a href="#" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    <a href="{{  route('special.edit',$special->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('delete.special',$special->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
