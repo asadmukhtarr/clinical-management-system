@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\specialities;
+use App\Models\doctor;
 
 class pagesController extends Controller
 {
@@ -70,7 +71,37 @@ class pagesController extends Controller
     // all doctors ...
     public function doctors(){
         $specilities = specialities::orderby('id','desc')->get();
-        return view('doctors',compact('specilities'));
+        $doctors = doctor::orderby('id','desc')->get();
+        return view('doctors',compact('specilities','doctors'));
+    }
+    // save doct ..
+    public function save_doctor(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'whatsapp' => 'required|digits:11',
+            'description' => 'required|string|max:1000',
+            'gender' => 'required|in:Male,Female,Other',
+            'speciality' => 'required|integer|exists:specialities,id',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $imageName = "";
+        if($request->hasFile('picture')){
+            $imageName = time().".".$request->picture->getClientOriginalExtension();
+            $request->picture->storeAs('doctors',$imageName,'public');
+        }   else {
+            echo 'not getting picture';
+        }
+        $doctor = new doctor;
+        $doctor->name = $request->name;
+        $doctor->email = $request->email;
+        $doctor->whatsapp = $request->whatsapp;
+        $doctor->description = $request->description;
+        $doctor->gender = $request->gender;
+        $doctor->specialities_id = $request->speciality;
+        $doctor->picture = $imageName;
+        $doctor->save();
+        return redirect()->back()->with('success','Doctor Created Succesfully');
     }
     // patients 
     public function patients(){

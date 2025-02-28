@@ -32,7 +32,11 @@ Route::middleware('auth')->group(function(){
         Route::get('/',[pagesController::class,'all_appointments'])->name('all.appointment'); // new  ..
     });
     // // doctors ..
-    Route::get('/doctors',[pagesController::class,'doctors'])->name('doctors'); // all doctors ..
+    Route::prefix('doctors')->group(function(){
+        Route::get('/',[pagesController::class,'doctors'])->name('doctors'); // all doctors ..
+        Route::post('/save',[pagesController::class,'save_doctor'])->name('save.doctor'); // save doctor ..
+    });
+    // patients ..
     Route::prefix('patients')->group(function(){
         Route::get('/',[pagesController::class,'patients'])->name('patient');
     });
