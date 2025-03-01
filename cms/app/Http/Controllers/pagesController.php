@@ -89,8 +89,6 @@ class pagesController extends Controller
         if($request->hasFile('picture')){
             $imageName = time().".".$request->picture->getClientOriginalExtension();
             $request->picture->storeAs('doctors',$imageName,'public');
-        }   else {
-            echo 'not getting picture';
         }
         $doctor = new doctor;
         $doctor->name = $request->name;
@@ -103,8 +101,43 @@ class pagesController extends Controller
         $doctor->save();
         return redirect()->back()->with('success','Doctor Created Succesfully');
     }
-    // patients 
-    public function patients(){
-        return view('patients');
+    // edit doctor ..
+    public function edit_doctor($id){
+        $doctor = doctor::find($id);
+        $specilities = specialities::orderby('id','desc')->get();
+        return view('editdoctor',compact('doctor','specilities'));
+    }
+    // update doctor ..
+    public function update_doctor($id,Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'whatsapp' => 'required|digits:11',
+            'description' => 'required|string|max:1000',
+            'gender' => 'required|in:Male,Female,Other',
+            'speciality' => 'required|integer|exists:specialities,id',
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $imageName = "";
+        $doctor = doctor::find($id);
+        $doctor->name = $request->name;
+        $doctor->email = $request->email;
+        $doctor->whatsapp = $request->whatsapp;
+        $doctor->description = $request->description;
+        $doctor->gender = $request->gender;
+        $doctor->specialities_id = $request->speciality;
+        if($request->hasFile('picture')){
+            $imageName = time().".".$request->picture->getClientOriginalExtension();
+            $request->picture->storeAs('doctors',$imageName,'public');
+            $doctor->picture = $imageName;
+        }
+        $doctor->save();
+        return redirect()->back()->with('success','Doctor Updated Succesfully');
+    }
+    // delete doctor ..
+    public function delete_doctor($id){
+        $doctor = doctor::find($id);
+        $doctor->delete();
+        return redirect()->back()->with('warning','Doctor Deleted Succesfully');
     }
 }

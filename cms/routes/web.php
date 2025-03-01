@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\patientsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,10 +36,14 @@ Route::middleware('auth')->group(function(){
     Route::prefix('doctors')->group(function(){
         Route::get('/',[pagesController::class,'doctors'])->name('doctors'); // all doctors ..
         Route::post('/save',[pagesController::class,'save_doctor'])->name('save.doctor'); // save doctor ..
+        Route::get('/edit/{id}',[pagesController::class,'edit_doctor'])->name('edit.doctor'); // edit doctor ..
+        Route::post('/update/{id}',[pagesController::class,'update_doctor'])->name('update.doctor'); // update doctor ..
+        Route::get('/delete/{id}',[pagesController::class,'delete_doctor'])->name('delete.doctor'); //delete doctor ..
     });
     // patients ..
     Route::prefix('patients')->group(function(){
-        Route::get('/',[pagesController::class,'patients'])->name('patient');
+        Route::get('/',[patientsController::class,'patients'])->name('patient');
+        Route::post('/save',[patientsController::class,'patients'])->name('save.patient');
     });
 
 });

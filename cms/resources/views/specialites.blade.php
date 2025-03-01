@@ -34,6 +34,7 @@
             <tr class="table-danger">
                 <th>ID</th>
                 <th>Name</th>
+                <th>Doctors</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -42,6 +43,9 @@
             <tr>
                 <td>{{ $special->id }}</td>
                 <td>{{ $special->title }}</td>
+                <td>
+                    {{ $special->doctor->count() }}                    
+                </td>
                 <td>
                     <a href="{{  route('special.edit',$special->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                     <a href="{{ route('delete.special',$special->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>

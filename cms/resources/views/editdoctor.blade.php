@@ -6,14 +6,14 @@
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-user-plus"></i> New Doctor 
+                <i class="fa fa-user-plus"></i> Update Doctor 
             </div>
             <div class="card-body">
-            <form action="{{ route('save.doctor') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('update.doctor',$doctor->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" >
+                    <input type="text" class="form-control" value="{{ $doctor->name }}" id="name" name="name" >
                     @error('name')
                     <font color="red">
                         <b>{{ $message  }}</b>
@@ -23,7 +23,7 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" >
+                    <input type="email" class="form-control" id="email" value="{{ $doctor->email }}" name="email" >
                     @error('email')
                     <font color="red">
                         <b>{{ $message  }}</b>
@@ -33,7 +33,7 @@
 
                 <div class="mb-3">
                     <label for="whatsapp" class="form-label">WhatsApp</label>
-                    <input type="text" class="form-control" id="whatsapp" name="whatsapp">
+                    <input type="text" class="form-control" id="whatsapp" value="{{ $doctor->whatsapp }}" name="whatsapp">
                     @error('whatsapp')
                     <font color="red">
                         <b>{{ $message  }}</b>
@@ -43,7 +43,9 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    <textarea class="form-control" id="description" name="description"  rows="3">
+                        {{ $doctor->description }}
+                    </textarea>
                     @error('description')
                     <font color="red">
                         <b>{{ $message  }}</b>
@@ -55,9 +57,9 @@
                     <label for="gender" class="form-label">Gender</label>
                     <select class="form-select" id="gender" name="gender">
                         <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        <option value="Male" @if($doctor->gender == "Male") selected @endif>Male</option>
+                        <option value="Female" @if($doctor->gender == "Female") selected @endif>Female</option>
+                        <option value="Other" @if($doctor->gender == "Other") selected @endif>Other</option>
                     </select>
                     @error('gender')
                     <font color="red">
@@ -71,7 +73,7 @@
                     <select class="form-select" id="specialities_id" name="speciality">
                         <option value="">Select Speciality</option>
                         @foreach($specilities as $special)
-                        <option value="{{ $special->id }}">{{ $special->title }}</option>
+                        <option value="{{ $special->id }}" @if($doctor->specialities_id == $special->id) selected @endif>{{ $special->title }}</option>
                         @endforeach
 
                     </select>
@@ -83,7 +85,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="picture" class="form-label">Upload Picture</label>
+                    <label for="picture" class="form-label">Upload Picture <br /> <font color="red">Please Upload Image Only If You Want To Change.</font></label>
                     <input type="file" class="form-control" id="picture" name="picture">
                     @error('picture')
                     <font color="red">
@@ -94,51 +96,6 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             </div>
-        </div>
-    </div>
-    <div class="col-lg-8">
-        <div class="card">
-             <div class="card-header">
-                <i class="fa fa-users"></i> All Doctors
-             </div>
-             <table class="table table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>WhatsApp</th>
-                        <th>Gender</th>
-                        <th>Speciality</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($doctors as $doctor)
-                    <tr>
-                        <td>{{ $doctor->id }}</td>
-                        <td>
-                            <img src="{{ asset('storage/doctors') }}/{{ $doctor->picture }}" class="rounded-circle" height="40px" />
-                            {{ $doctor->name }}
-                        </td>
-                        <td>{{ $doctor->email }}</td>
-                        <td>{{ $doctor->whatsapp }}</td>
-                        <td>{{ $doctor->gender }}</td>
-                        <td>{{ $doctor->specialities->title }}</td>
-                        <td>
-                            <!-- Edit Button -->
-                            <a href="{{ route('edit.doctor',$doctor->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <!-- Delete Form -->
-                            <a href="{{ route('delete.doctor',$doctor->id) }}">
-                                <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
-                                    Delete
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
