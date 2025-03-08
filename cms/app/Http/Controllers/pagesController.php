@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\specialities;
 use App\Models\doctor;
+use App\Models\patient;
 
 class pagesController extends Controller
 {
@@ -66,7 +67,10 @@ class pagesController extends Controller
         return view('appointments.all');
     }
     public function new_appointment(){
-        return view('appointments.new');
+        $doctors = doctor::all();
+        $specilities = specialities::all();
+        $patients = patient::all();
+        return view('appointments.new',compact('doctors','specilities','patients'));
     }
     // all doctors ...
     public function doctors(){
