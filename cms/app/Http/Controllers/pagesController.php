@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\specialities;
 use App\Models\doctor;
 use App\Models\patient;
+use App\Models\appointment;
 
 class pagesController extends Controller
 {
@@ -70,7 +71,26 @@ class pagesController extends Controller
         $doctors = doctor::all();
         $specilities = specialities::all();
         $patients = patient::all();
-        return view('appointments.new',compact('doctors','specilities','patients'));
+        $appointments = appointment::all();
+        return view('appointments.new',compact('doctors','specilities','patients','appointments'));
+    }
+    public function save_appointment(Request $request){
+        $request->validate([
+            'patient' => 'required|integer|exists:patients,id', // Ensure patient exists
+            'Specialty' => 'required|integer|exists:specialities,id', // Ensure specialty exists
+            'doctor' => 'required|integer|exists:doctors,id', // Ensure doctor exists
+            'day' => 'required|date|after_or_equal:today', // Ensure date is today or in the future
+            'dayslot' => 'required|date_format:H:i', // Validate time format
+        ]);
+        $appointment = new appointment();
+        $appointment->patient_id = $request->patient; // Replace with actual patient ID
+        $appointment->doctor_id = $request->Specialty; // Replace with actual doctor ID
+        $appointment->specialties_id = $request->doctor; // Replace with actual specialty ID
+        $appointment->day = $request->day; // Date of appointment
+        $appointment->slot = $request->dayslot; // Time slot
+        $appointment->status = 0; // Example: 1 for active, 0 for canceled
+        $appointment->save();
+        return redirect()->back()->with('success','Appointment Created Succesfully');
     }
     // all doctors ...
     public function doctors(){

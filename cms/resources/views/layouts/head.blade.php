@@ -82,6 +82,7 @@
   </nav>
   
   <div class="container">
+    @include('includes.flash')
     @yield('body')
   </div>
   

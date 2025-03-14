@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('specialties_id')->nullable();
             $table->text('day')->nullable();
             $table->text('slot')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

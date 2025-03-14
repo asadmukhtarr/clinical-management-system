@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function(){
     // bookoings ..
     Route::prefix('appoinments')->group(function(){
         Route::get('/new',[pagesController::class,'new_appointment'])->name('new.appointment'); // new  ..
+        Route::post('/create',[pagesController::class,'save_appointment'])->name('save.appointment'); // save ..
         Route::get('/',[pagesController::class,'all_appointments'])->name('all.appointment'); // new  ..
     });
     // // doctors ..
