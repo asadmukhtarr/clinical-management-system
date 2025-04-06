@@ -73,4 +73,5 @@
     - For Create Connected Model + Migration : php artisan make:model -m
 # Javascript 
     - Events : Actions :- Click  , Doubel Click , Break , right click , left click , mouse over
-    - Variables : Integer , String , Float, Chrac , Bool: when value will be in double courts it will be string , single court it will be integer ...
+    - Variables : Integer , String , Float, Chrac , Bool: when value will be in double courts it will be string ,   single court it will be integer ...
+    
