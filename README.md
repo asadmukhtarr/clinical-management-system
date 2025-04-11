@@ -60,6 +60,11 @@
         - Views: Frontend Apko Show Ho raha hai ... : resoruces/views .. extension .. filename.blade.php
         - Routes(urls, Links) : Direct Through View , Through Controller ..
         - For Controller: php artisan make:controller pagesController 
+    - ReactJS
+       - Installation:
+       - requirements: Latest NodeJs Installed
+       - command For Install Project: npx create-react-app project-name
+       - RUn Project: npm start 
 
 # Tips And Tricks
     - We can write any code related to web in php .. ( Html , JS , PHP , CSS) ...
@@ -74,4 +79,7 @@
 # Javascript 
     - Events : Actions :- Click  , Doubel Click , Break , right click , left click , mouse over
     - Variables : Integer , String , Float, Chrac , Bool: when value will be in double courts it will be string ,   single court it will be integer ...
+    - Main Types of functions : declare function , expression function , async function 
+    - arrays and objects ...
+    - Array : An array in JavaScript is a data structure used to store multiple values in a single variable. It's   like a list of items, where each item has an index starting from
     
