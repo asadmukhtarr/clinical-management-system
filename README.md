@@ -65,7 +65,13 @@
        - requirements: Latest NodeJs Installed
        - command For Install Project: npx create-react-app project-name
        - RUn Project: npm start 
-
+    - React Project:
+        - Home : Doctors , Landing Page .. , Track ...
+        - Doctors :
+        - Schduale Appointments
+        - Book New Appointment
+        - About
+        - Contact
 # Tips And Tricks
     - We can write any code related to web in php .. ( Html , JS , PHP , CSS) ...
     - NPM ( Node Package Manager )
@@ -82,4 +88,11 @@
     - Main Types of functions : declare function , expression function , async function 
     - arrays and objects ...
     - Array : An array in JavaScript is a data structure used to store multiple values in a single variable. It's   like a list of items, where each item has an index starting from
-    
+# React Application
+    - Pages:
+        - Home
+        - About
+        - Contact
+        - Book
+        - Track
+        - Doctors
