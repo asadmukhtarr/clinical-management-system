@@ -1,3 +1,4 @@
+import Track from "./Track";
 const Home = () => {
     return (
         <div>
@@ -51,6 +52,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <Track />
         </div>
     )
 }
