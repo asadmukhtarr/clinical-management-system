@@ -7,6 +7,7 @@ import Book from "./components/Book";
 import Track from "./components/Track";
 import Header from "./components/includes/Header";
 import Contact from "./components/Contact";
+import Test from "./components/Test";
 const App = () => {
     var name = "Web Medical Hub";
     return (
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path="/appointment" element={<Appointments />} />
                 <Route path="/book" element={<Book />} />
                 <Route path="/track" element={<Track />} />
+                <Route path="/test" element={<Test />} />
             </Routes>
         </div>
     )
