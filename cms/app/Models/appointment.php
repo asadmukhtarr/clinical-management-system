@@ -13,4 +13,7 @@ class appointment extends Model
     public function doctor(){
         return $this->belongsTo(doctor::class);
     }
+    public function specialities(){
+        return $this->belongsTo(specialities::class,'specialties_id');
+    }
 }
