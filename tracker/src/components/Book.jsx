@@ -6,6 +6,7 @@ export default function Book() {
   const [whatsapp,setWhatsapp] = useState();
   const [specialty,setSpeciality] = useState();
   const [doctor,setDoctor] = useState();
+  const [doctors,setDoctors] = useState([]);
   const [day,setDay] = useState();
   const [time,setTime] = useState();
   const [specialities,setspecialities] = useState([]);
@@ -14,9 +15,12 @@ export default function Book() {
       const data = await response.json();
       setspecialities(data);
   }
-  // async function fetchdoctor(v){
-  //     const response = await fetch();
-  // }
+  async function fetchdoctor(value){
+      setSpeciality(value);
+      const response = await fetch("http://localhost:8000/api/special/doctor/"+value);
+      const data = await response.json();
+      setDoctors(data);
+  }
   const submit = () => {
     const appointment = {
       name:name,
@@ -59,7 +63,7 @@ export default function Book() {
               <label>
                 <i className="fa fa-stethoscope"></i> Select Specialty
               </label>
-              <select name="specialty" onChange={(e) => setSpeciality(e.target.value)} className="form-control rounded-0 mt-1">
+              <select name="specialty" onChange={(e) => fetchdoctor(e.target.value)} className="form-control rounded-0 mt-1">
                 <option value="">Select Specialty</option>
                 {
                   specialities.map((specialty) => (
@@ -72,22 +76,25 @@ export default function Book() {
             {/* Select Doctor */}
             <div className="form-group mt-3 mb-3">
             {
-              doctor ? (
-                <div className="form-group mt-3 mb-3">
-                  <label><b>Select Doctor</b></label>
-                  <select name="doctor" onChange={(e) => setDoctor(e.target.value)} className="form-control rounded-0 mt-1">
-                    <option value="">Select Doctor</option>
-                    {/* You can replace this static example with actual doctors fetched from API */}
-                    <option value="1">Dr. John Doe</option>
-                    <option value="2">Dr. Jane Smith</option>
-                  </select>
-                </div>
-              ) : (
-                <div className="form-group mt-3 mb-3">
-                  <label><font color="red"><b>Select Speciality First</b></font></label>
-                </div>
-              )
-            }
+  doctors.length > 0 ? (
+    <div className="form-group mt-3 mb-3">
+      <label><b>Select Doctor</b></label>
+      <select name="doctor" onChange={(e) => setDoctor(e.target.value)} className="form-control rounded-0 mt-1">
+        <option value="">Select Doctor</option>
+        {
+          doctors.map((doc) => (
+            <option key={doc.id} value={doc.id}>{doc.name}</option>
+          ))
+        }
+      </select>
+    </div>
+  ) : (
+    <div className="form-group mt-3 mb-3">
+      <label><font color="red"><b>No Doctor Found</b></font></label>
+    </div>
+  )
+}
+
             </div>
 
             {/* Select Day */}
