@@ -85,7 +85,7 @@
                     <tr>
                         <td>{{ $appointment->id }}</td>
                         <td>{{ $appointment->patient->name }}</td>
-                        <td>{{ $appointment->doctor->name }}</td>
+                        <td>{{ $appointment->doctor->name ?? 'null' }}</td>
                         <td>On {{ $appointment->day }} at {{ $appointment->slot }}</td>
                         <td>
                             @if($appointment->status == 0)

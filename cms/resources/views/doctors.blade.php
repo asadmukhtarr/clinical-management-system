@@ -124,7 +124,7 @@
                         <td>{{ $doctor->email }}</td>
                         <td>{{ $doctor->whatsapp }}</td>
                         <td>{{ $doctor->gender }}</td>
-                        <td>{{ $doctor->specialities->title }}</td>
+                        <td>{{ $doctor->specialities->title ?? 'Null' }}</td>
                         <td>
                             <!-- Edit Button -->
                             <a href="{{ route('edit.doctor',$doctor->id) }}" class="btn btn-primary btn-sm">Edit</a>

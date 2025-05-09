@@ -31,3 +31,11 @@ Route::get('/specialities/{id}',function($id){
     $specialities = specialities::find($id);
     return response()->json($specialities);
 });
+Route::get('/specialities',function(){
+    $specialities = specialities::all();
+    return response()->json($specialities);
+});
+Route::get('/special/doctor/{id}',function($id){
+   $doctor = doctor::where('specialities_id',$id)->get();
+   return response()->json($doctor);
+});

@@ -101,3 +101,8 @@
         - Step # 2 : BrwoserRouter In Index.js
         - Step # 3 : Import Routes And Route in App.js and create routes ...
         - Step # 4 : Add Links In Header ..
+# API Links
+    - For Doctors Against Specialities : http://localhost:8000/api/special/doctor/11
+    - For All Doctors : http://localhost:8000/api/doctors
+    - For Appointments : http://localhost:8000/api/appointments
+    - For Specialities : http://localhost:8000/api/specialities/

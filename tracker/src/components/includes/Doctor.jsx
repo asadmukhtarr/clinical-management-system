@@ -14,7 +14,7 @@ export default function Doctor(props) {
               />
               <h5 className="card-title">{props.doctor.name}</h5>
               <p className="card-text">{props.doctor.email}</p>
-              <p className="card-text">{props.doctor.whatsapp}</p>
+              <p className="card-text">{props.doctor.whatsapp} | wjahsdj</p>
             </div>
           </div>
         </div>
