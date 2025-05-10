@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
+import Swal from 'sweetalert2';
 
 export default function Book() {
   const[name,setName] = useState();
@@ -21,7 +22,7 @@ export default function Book() {
       const data = await response.json();
       setDoctors(data);
   }
-  const submit = () => {
+  const submit =  async () => {
     const appointment = {
       name:name,
       whatsapp:whatsapp,
@@ -31,6 +32,31 @@ export default function Book() {
       time:time
     }
     console.log(appointment);
+    try {
+      const response = await fetch('http://localhost:8000/api/appointment/request',{
+        method:'POST',
+         headers: {
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(appointment),
+      });
+      const data = await response.json();
+       if (response.ok && data.code === 200) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Appointment Created',
+        text: data.message,
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed to Create Appointment',
+        text: data.message || 'Something went wrong.',
+      });
+    }
+    } catch(error){
+      console.log(error);
+    }
   }
   useEffect(function(){
     fetchspecialities();
@@ -54,7 +80,7 @@ export default function Book() {
             </div>
             <div className="form-group">
               <label>
-                <i class="fab fa-whatsapp"></i> What's App
+                <i className="fab fa-whatsapp"></i> What's App
               </label>
               <input type="text" className="form-control" onKeyUp={(e) => setWhatsapp(e.target.value)} placeholder={`Your What's App`} />
             </div>
@@ -67,7 +93,7 @@ export default function Book() {
                 <option value="">Select Specialty</option>
                 {
                   specialities.map((specialty) => (
-                    <option value={specialty.id}>{specialty.title}</option>
+                    <option value={specialty.id} key={specialty.id}>{specialty.title}</option>
                   ))
                 }
               </select>
