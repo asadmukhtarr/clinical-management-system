@@ -106,3 +106,7 @@
     - For All Doctors : http://localhost:8000/api/doctors
     - For Appointments : http://localhost:8000/api/appointments
     - For Specialities : http://localhost:8000/api/specialities/
+# NodeJs 
+    - Download And install NodeJS : https://nodejs.org/en/download
+    - Install nodemon  .... for install nodemon
+    - npm install express .... for install express ..
