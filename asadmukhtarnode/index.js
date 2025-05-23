@@ -1,17 +1,21 @@
 const express = require('express');
 const app = express();
-const port = 1010;
+const path = require('path');
+const port = 3030;
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'));
+
 app.get('/',(req,res) => {
-    res.send('Hello Main Page');
+    res.render('index');
 });
 app.get('/about',(req,res)=> {
-    res.send('Hello About');
+    res.render(('about'));
 });
 app.get('/contact',(req,res)=> {
-    res.send('Hello contact');
+    res.render('contact');
 });
 app.get('/products',(req,res)=> {
-    res.send('Hello products');
+    res.render('products');
 });
 app.listen(port,()=> {
     console.log('Hello Dost Project Is Running On ',port);

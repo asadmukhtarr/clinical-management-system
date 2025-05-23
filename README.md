@@ -110,3 +110,12 @@
     - Download And install NodeJS : https://nodejs.org/en/download
     - Install nodemon  .... for install nodemon
     - npm install express .... for install express ..
+    - npm install ejs ........ for install html template engine ..
+    - Steps for install ejs engine :
+        - step # 1: npm install ejs
+        - add const path = require('path'); below th express
+        - set and bind ejs with expressjs:
+            - app.set('view engine','ejs');
+            - app.set('views',path.join(__dirname,'views'));
+        - create a forlder of views (and add your first file index.ejs)
+        - and render this file through route ..
