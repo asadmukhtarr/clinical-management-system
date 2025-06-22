@@ -63,10 +63,24 @@
                         <tr>
                             <th><i class="fa fa-picture-o"></i> Image</th>
                             <th><i class="fa fa-tag"></i> Title</th>
-                            <th><i class="fa fa-align-left"></i> Description</th>
+                            <th><i class="fa fa-align-left"></i> Stock</th>
                             <th><i class="fa fa-usd"></i> Price</th>
                             <th><i class="fa fa-cogs"></i> Action</th>
                         </tr>
+                        <% products.forEach(product=> { %>
+                        <tr>
+                            <td><i class="fa fa-picture-o"></i> Image</td>
+                            <td><i class="fa fa-tag"></i> <%= product.title %> </td>
+                            <td><i class="fa fa-align-left"></i> <%= product.Stock %></td>
+                            <td><i class="fa fa-usd"></i> <%= product.price %></td>
+                            <td>
+                                <a href="/product/delete/<%= product._id %>">
+                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                </a>
+                                <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <% }); %>
                     </table>
                 </div>
             </div>

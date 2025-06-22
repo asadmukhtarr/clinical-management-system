@@ -1,5 +1,6 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
+const { ObjectId } = require('mongodb');
 const app = express();
 const path = require('path');
 const port = 3030;
@@ -42,13 +43,25 @@ app.get('/products',(req,res)=> {
 app.get('/create', async (req, res) => {
     try {
         const collection = db.collection("products");
-        const products = await collection.find({}).toArray();
-        //res.json(products);
+        const products = await collection.find({}).sort({_id:-1}).toArray();
+       // res.json(products);
         res.render('create',{products}); 
     } catch (error) {
         console.log("cant fetch data from mongodb", error);
     }
 });
+app.get('/product/delete/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        console.log("ID is here For Delete ",id);
+        const collection = db.collection("products"); 
+        await collection.deleteOne({ _id: new ObjectId(id) }); // 👈 convert string to ObjectId
+        res.redirect('/create');
+    } catch (error) {
+        console.log('cant delete data',error);
+    }
+});
+
 app.listen(port,()=> {
     console.log('Hello Dost Project Is Running On ',port);
 })
