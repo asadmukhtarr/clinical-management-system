@@ -69,7 +69,9 @@
                         </tr>
                         <% products.forEach(product=> { %>
                         <tr>
-                            <td><i class="fa fa-picture-o"></i> Image</td>
+                            <td>
+                                <img src="<%= product.image %>" alt="Product Image" width="60">
+                            </td>
                             <td><i class="fa fa-tag"></i> <%= product.title %> </td>
                             <td><i class="fa fa-align-left"></i> <%= product.Stock %></td>
                             <td><i class="fa fa-usd"></i> <%= product.price %></td>

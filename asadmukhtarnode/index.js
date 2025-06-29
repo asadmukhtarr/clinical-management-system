@@ -1,8 +1,9 @@
 const express = require('express');
-const { MongoClient } = require('mongodb');
-const { ObjectId } = require('mongodb');
-const app = express();
+const { MongoClient,ObjectId } = require('mongodb');
+const multer = require('multer');
+const bodyParser = require('body-parser');
 const path = require('path');
+const app = express();
 const port = 3030;
 
 const url = "mongodb://localhost:27017";
@@ -26,7 +27,21 @@ async function mongodb_connection() {
 mongodb_connection();
 
 app.set('view engine','ejs');
-app.set('views',path.join(__dirname,'views'));
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public'))); // this is for file handling ...
+app.use(bodyParser.urlencoded({ extended: true })); // this is for form handlig ...
+
+// multer setup ..
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads');
+    },
+    filename: function (req,file,cb) {
+        const uniquename = Date.now() + '-' + Math.round(Math.random() * 1E9) + '-' + file.originalname;
+        cb(null, uniquename);
+    }
+});
+const upload = multer({ storage: storage });
 
 app.get('/',(req,res) => {
     res.render('index');
@@ -48,6 +63,23 @@ app.get('/create', async (req, res) => {
         res.render('create',{products}); 
     } catch (error) {
         console.log("cant fetch data from mongodb", error);
+    }
+});
+app.post('/products/store', upload.single('image'), async (req, res) => {
+    try {   
+        const { title, description, price } = req.body;
+        const image = req.file ? 'uploads/' + req.file.filename : '';
+        const product = {
+            title,
+            description,
+            price: parseFloat(price),
+            image,
+            stock:2
+        }
+        await db.collection("products").insertOne(product);
+        res.redirect('/create');
+    } catch (error) {
+        console.log('cant save data getting error',error);   
     }
 });
 app.get('/product/delete/:id', async (req, res) => {
